@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Roblox Condo Games Website">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roblox Condo Games</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #2a004f, #5e17eb);
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding: 40px 20px 20px 20px;
+    font-size: 40px;
+    font-weight: bold;
+    user-select: none;
+}
+
+footer {
+    width: 100%;
+    height: 50px;
+    display: block;
+}
+
+a.disabled {
+    pointer-events: none;
+    opacity: 0.75;
+}
+
+.subtitle {
+    font-size: 22px;
+    margin-top: 30px;
+    opacity: 0.9;
+    user-select: none;
+}
+
+.note {
+    background: linear-gradient(135deg, #2a004f44, #5e17eb44);
+    padding: 15px 20px;
+    border-radius: 10px;
+    width: fit-content;
+    max-width: 80%;
+    margin: 20px auto; /* центрируем блок */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ffffff; /* белый текст для контраста */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    user-select: none;
+    transition: 0.3s;
+}
+
+.note:hover {
+    transform: scale(1.025);
+}
+
+.mini-note {
+    width: fit-content;
+    margin: 1px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    color: white;
+    text-align: center;
+    user-select: none;
+}
+
+.warning {
+    font-size: 20px;
+    color: #ff5555;
+    -webkit-text-stroke: 0.5px black;
+    font-weight: bold;
+}
+
+.download-btn {
+    margin-top: 20px;
+    padding: 15px 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background: #a855f7;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    background: #c084fc;
+    transform: scale(1.05);
+}
+
+.link-btn {
+    margin: 10px;
+    padding: 15px 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    background: #a855f7;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.link-btn:hover {
+    background: #c084fc;
+    transform: scale(1.05);
+}
+
+.two-sides {
+    margin: auto;
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+@media (orientation: portrait) {
+    .two-sides {
+        flex-direction: column;
+    }
+}
+
+.divider {
+    margin-top: 45px;
+    width: 2px;
+    background-color: #a855f7;
+    border-radius: 70%;
+}
+
+.gallery {
+    display: flex;
+    flex: 2;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.gallery-header {
+    font-size: 25px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.gallery-body {
+    padding: 5px;
+    column-count: 3;
+    column-gap: 10px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    user-select: none;
+}
+
+.gallery-body img {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: 0.3s;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.gallery-body img:hover {
+    transform: scale(1.025);
+}
+
+.partners {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: top;
+}
+
+.partners-header {
+    font-size: 25px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.partners-body {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.partners-footer {
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+.partner {
+    padding: 10px;
+    background-color: #a855f7;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.p-name::before {
+    content: "Name: ";
+    color: black;
+}
+
+.p-language::before {
+    content: "Language: ";
+    color: black;
+}
+
+.p-gender::before {
+    content: "Gender: ";
+    color: black;
+}
+
+.p-lf::before {
+    content: "Looking for: ";
+    color: black;
+}
+
+.p-roblox::before {
+    content: "Roblox: ";
+    color: black;
+}
+
+.p-roblox a {
+    text-decoration: underline;
+    color: white;
+    transition: 0.3s all;
+}
+
+.p-roblox a:hover {
+    color: white;
+}
+
+.p-contact::before {
+    content: "Contacts: \A";
+    white-space: pre;
+    color: black;
+}
+
+.p-contact a {
+    text-decoration: underline;
+    color: white;
+    transition: 0.3s all;
+}
+
+.p-contact a:hover {
+    color: white;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    Roblox Condo Games
+</header>
+
+<div class="subtitle">
+    Roblox Condo Hub
+</div>
+
+<a href="https://github.com/rbxcnd/rxc/releases/download/cnd/RobloxCondoHub.exe" target="_blank" download>
+    <button class="download-btn">Download (Windows Only)</button>
+</a>
+
+<div class="note">
+    The app contains an up-to-date list of Discord server links and a small selection of games that are rarely blocked.<br>Once installed on your PC, you can continue playing from other devices.
+</div>
+
+<div class="note warning">
+    We recommend playing on Web Condo or in the studio, as there is a risk of being banned for playing in public games.
+</div>
+
+<a href="https://discord.gg/NgPVd5PPq6" target="_blank">
+    <button class="link-btn">App News Discord Server (New)</button>
+</a>
+
+<div class="two-sides">
+    <div class="gallery">
+        <div class="gallery-header">Gallery</div>
+        <div class="gallery-body">
+            <img src="images/img1.png" alt="Gallery Image">
+            <img src="images/img2.png" alt="Gallery Image">
+            <img src="images/img3.png" alt="Gallery Image">
+            <img src="images/img4.png" alt="Gallery Image">
+            <img src="images/img5.png" alt="Gallery Image">
+            <img src="images/img6.png" alt="Gallery Image">
+            <img src="images/img7.png" alt="Gallery Image">
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="partners">
+        <div class="partners-header">Find Partners</div>
+        <div class="mini-note">💡 Left click: Open or copy | Right click: Copy (Roblox & Contacts)</div>
+        <div class="partners-body" alt="Copta">
+            <!-- Partner start-->
+            <div class="partner">
+                <div class="p-name">Unknown</div>
+                <div class="p-language">Russian, English</div>
+                <div class="p-gender">Male</div>
+                <div class="p-lf">Female</div>
+                <div class="p-roblox">
+                    <a href="https://www.roblox.com/users/449741406/profile" target="_blank" class="copyable-alt" data-copy="nhok_pro123">nhok_pro123</a>
+                </div>
+                <div class="p-contact">
+                    <a href="https://t.me/w1lljay" target="_blank" class="copyable-alt" data-copy="@w1lljay">Telegram: @w1lljay</a>
+                    <br>
+                    <a href="#" target="_blank" class="copyable copyable-alt" data-copy="wezarte">Discord: wezarte</a>
+                </div>
+            </div>
+            <!-- Partner end -->
+             <!-- Partner start-->
+            <div class="partner">
+                <div class="p-name">Unknown</div>
+                <div class="p-language">Russian, English</div>
+                <div class="p-gender">Male</div>
+                <div class="p-lf">Female</div>
+                <div class="p-roblox">
+                    <a href="https://www.roblox.com/users/3038124027/profile" target="_blank" class="copyable-alt" data-copy="Kiriyak0">Kiriyak0</a>
+                </div>
+                <div class="p-contact">
+                    <a href="#" target="_blank" class="copyable copyable-alt" data-copy="eben454">Discord: eben454</a>
+                </div>
+            </div>
+            <!-- Partner end -->
+        </div>
+        <div class="partners-footer">
+            Want your spot here? Submit the form in the app!
+        </div>
+    </div>
+</div>
+<footer></footer>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".copyable").forEach(el => {
+            el.addEventListener("click", async (e) => {
+                e.preventDefault();
+                const text = el.dataset.copy;
+                await navigator.clipboard.writeText(text);
+                alert("Text copied: " + text);
+            });
+        });
+        document.querySelectorAll(".copyable-alt").forEach(el => {
+            el.addEventListener("contextmenu", async (e) => {
+                e.preventDefault();
+                const text = el.dataset.copy;
+                await navigator.clipboard.writeText(text);
+                alert("Text copied: " + text);
+            });
+        });
+    });
+</script>
+</body>
+</html>
